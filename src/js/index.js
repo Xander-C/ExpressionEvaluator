@@ -7,11 +7,11 @@ import {
     isNumber,
     isUnary,
     bracketValid,
-    cmpOperator,
     calculate,
     calculateUnary,
     showMsg
 } from "./modules/util.js"
+import { cmpOperator } from "./modules/cmpOperator.js";
 import {
     Result
 } from "./modules/cmpOpResult.js"
