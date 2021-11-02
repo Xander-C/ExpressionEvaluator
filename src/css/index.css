@@ -1,0 +1,13 @@
+body {
+    background-color: #FAFAFA !important;
+}
+
+.layui-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.centerize {
+    height: 600px;
+}
