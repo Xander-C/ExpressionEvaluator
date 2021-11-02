@@ -26,8 +26,9 @@ const notBegin = ")]}+-*/"
 document.querySelector("#eval-btn").addEventListener("click", () => {
     let str = document.querySelector("#eval-input").value;
     console.log(str);
-    let ans = evaluate(str);
-    if (ans != null) {
+    let history = evaluate(str);
+    let ans = history[history.length - 1][2][0];
+    if (ans != null && history[history.length - 1][2].length == 1) {
         alert("结果为：" + ans);
     }
 })
@@ -150,5 +151,5 @@ const evaluate = (str) => {
         numStack.print();
     }
     history.print();
-    return numStack.top();
+    return history.getHistory();
 }

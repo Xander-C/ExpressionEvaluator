@@ -8,4 +8,8 @@ export function History() {
     this.print = () => {
         console.log(items);
     }
+
+    this.getHistory = () => {
+        return items;
+    }
 }
