@@ -36,5 +36,9 @@ export function Stack() {
 
     this.contain = function (element) {
         return items.includes(element);
-    }
+    };
+
+    this.snapshot = function () {
+        return [...items];
+    };
 }

@@ -11,10 +11,15 @@ import {
     calculateUnary,
     showMsg
 } from "./modules/util.js"
-import { cmpOperator } from "./modules/cmpOperator.js";
+import {
+    cmpOperator
+} from "./modules/cmpOperator.js";
+import {
+    History
+} from "./modules/history.js";
 import {
     Result
-} from "./modules/cmpOpResult.js"
+} from "./modules/cmpOpResult.js";
 
 const notBegin = ")]}+-*/"
 
@@ -28,6 +33,7 @@ document.querySelector("#eval-btn").addEventListener("click", () => {
 })
 
 const evaluate = (str) => {
+    let history = new History();
     if (str.indexOf('#') != 0) {
         showMsg("第一个字符需为'#'");
         return;
@@ -38,14 +44,17 @@ const evaluate = (str) => {
     }
     let opStack = new Stack();
     let numStack = new Stack();
+    history.log(str, opStack, numStack, "origin");
     let char = str.charAt(0);
     str = str.slice(1);
     console.log("str.slice(): " + str);
     opStack.push(char);
+    history.log(str, opStack, numStack, "init");
     char = str.charAt(0);
     str = str.slice(1);
     console.log("str.slice(): " + str);
     while (char != '#' || opStack.top() != '#') {
+        let logType = "placeHolder";
         console.log("str: " + str);
         console.log("evaluating: " + char);
         if (!isLegalChar(char)) {
@@ -67,6 +76,7 @@ const evaluate = (str) => {
                 console.log(sum);
             }
             numStack.push(sum);
+            logType = "Number"
         }
         if (isUnary(char)) {
             switch (char) {
@@ -102,6 +112,7 @@ const evaluate = (str) => {
             switch (cmpOperator(opStack.top(), char)) {
                 case Result.CHAR:
                     opStack.push(char);
+                    logType = "Char";
                     break;
                 case Result.STACK:
                     let op = opStack.pop();
@@ -121,12 +132,15 @@ const evaluate = (str) => {
                         let num = numStack.pop();
                         numStack.push(calculateUnary(op, num));
                     }
+                    history.log(str, opStack, numStack, "Stack");
                     continue;
                 case Result.CLOSE_BRACKET:
                     opStack.pop();
+                    logType = "Bracket";
             }
         }
 
+        history.log(str, opStack, numStack, logType);
         char = str.charAt(0);
         str = str.slice(1);
 
@@ -135,6 +149,6 @@ const evaluate = (str) => {
         console.log("numStack: ");
         numStack.print();
     }
-    console.log("after evaluating " + char + " : ")
+    history.print();
     return numStack.top();
 }
