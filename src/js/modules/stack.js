@@ -2,43 +2,43 @@ export function Stack() {
 
     var items = [];
 
-    this.push = function(element){
+    this.push = (element) => {
         items.push(element);
     };
 
-    this.pop = function(){
+    this.pop = () => {
         return items.pop();
     };
 
-    this.top = function(){
-        return items[items.length-1];
+    this.top = () => {
+        return items[items.length - 1];
     };
 
-    this.isEmpty = function(){
+    this.isEmpty = () => {
         return items.length == 0;
     };
 
-    this.size = function(){
+    this.size = () => {
         return items.length;
     };
 
-    this.clear = function(){
+    this.clear = () => {
         items = [];
     };
 
-    this.print = function(){
+    this.print = () => {
         console.log(items.toString());
     };
 
-    this.toString = function(){
+    this.toString = () => {
         return items.toString();
     };
 
-    this.contain = function (element) {
+    this.contain = (element) => {
         return items.includes(element);
     };
 
-    this.snapshot = function () {
+    this.snapshot = () => {
         return [...items];
     };
 }
