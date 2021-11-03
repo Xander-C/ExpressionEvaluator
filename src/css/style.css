@@ -74,7 +74,6 @@ details,
 embed,
 figure,
 figcaption,
-copyright-w3ls,
 header,
 hgroup,
 menu,
@@ -100,7 +99,6 @@ aside,
 details,
 figcaption,
 figure,
-copyright-w3ls,
 header,
 hgroup,
 menu,
@@ -228,39 +226,6 @@ body {
     font-size: 100%;
     min-height: 100vh;
     font-family: 'Noto Sans', sans-serif;
-}
-
-/* title */
-
-h1 {
-    font-size: 3em;
-    color: #fff;
-    text-align: center;
-    margin: 2.5vw 1vw 3vw;
-    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.32);
-}
-
-/* //title-*/
-
-/* content */
-
-.sub-main-w3 {
-    display: -webkit-flex;
-    display: -webkit-box;
-    display: -moz-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    text-align: center;
-}
-
-.sub-main-w3 .widget-agile {
-    width: 32.7%;
-    margin: 0 5vw;
-    background: rgba(249, 247, 247, 0.15);
-    box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.13);
 }
 
 input#basicCalculator {
