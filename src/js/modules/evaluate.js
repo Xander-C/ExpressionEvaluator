@@ -114,6 +114,10 @@ export const evaluate = (str) => {
                         }
                         let scd = numStack.pop();
                         let fst = numStack.pop();
+                        if (op == '/' && scd == 0) {
+                            showMsg("除零错误");
+                            return;
+                        }
                         numStack.push(calculate(fst, op, scd));
                         logType = "Binocular";
                     } else {
