@@ -37,6 +37,8 @@ a {
 }
 
 .displayText {
+    background-color: transparent;
+    border: 0em;
     margin-top: 20px;
     color: #FFF;
     font-size: 40px;

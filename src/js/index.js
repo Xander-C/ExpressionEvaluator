@@ -36,7 +36,7 @@ document.querySelectorAll(".char").forEach((i) => {
     i.addEventListener("click", () => {
         let char = i.innerHTML;
         let display = document.querySelector("#display");
-        let str = display.innerHTML;
+        let str = display.value;
         if (str == "0") {
             str = '';
         }
@@ -46,18 +46,18 @@ document.querySelectorAll(".char").forEach((i) => {
         }
         str += char;
         console.log(char);
-        display.innerHTML = str;
+        display.value = str;
     })
 })
 
 document.querySelector("#btn-delete").addEventListener("click", () => {
-    document.querySelector("#display").innerHTML = "0";
+    document.querySelector("#display").value = "0";
     isAns = 0;
 })
 
 document.querySelector("#equals").addEventListener("click", () => {
     let display = document.querySelector("#display");
-    let str = display.innerHTML;
+    let str = display.value;
     if (str.charAt(0) != '#') {
         str = "#" + str;
     }
@@ -71,7 +71,7 @@ document.querySelector("#equals").addEventListener("click", () => {
         if (ans - parseInt(ans) != 0) {
             ans = ans.toFixed(3);
         }
-        display.innerHTML = ans;
+        display.value = ans;
     }
     isAns = 1;
     updateHistory(history)
