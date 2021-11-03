@@ -35,12 +35,12 @@ export const evaluate = (str) => {
     }
     let opStack = new Stack();
     let numStack = new Stack();
-    history.log(str, opStack, numStack, "origin");
+    history.log(str, opStack, numStack, "Origin");
     let char = str.charAt(0);
     str = str.slice(1);
     console.log("str.slice(): " + str);
     opStack.push(char);
-    history.log(str, opStack, numStack, "init");
+    history.log(str, opStack, numStack, "Init");
     char = str.charAt(0);
     str = str.slice(1);
     console.log("str.slice(): " + str);

@@ -32,12 +32,14 @@ a {
 
 .displayBox {
     background: #292929;
+    height: 70px;
     overflow: hidden
 }
 
 .displayText {
+    margin-top: 20px;
     color: #FFF;
-    font-size: 60px;
+    font-size: 40px;
     font-weight: 100;
     overflow: hidden;
     text-align: right;
@@ -220,7 +222,7 @@ a {
 
 @media(max-width: 600px) {
     .displayText {
-        font-size: 50px !important;
+        font-size: 40px !important;
     }
 }
 

@@ -2,6 +2,8 @@ import {
     evaluate
 } from "./modules/evaluate.js";
 
+var isAns = 0;
+
 const updateHistory = (history) => {
     let tableBody = document.querySelector("#table-body");
     if (tableBody !== "undefined") {
@@ -38,6 +40,10 @@ document.querySelectorAll(".char").forEach((i) => {
         if (str == "0") {
             str = '';
         }
+        if (isAns == 1) {
+            str = '';
+            isAns = 0;
+        }
         str += char;
         console.log(char);
         display.innerHTML = str;
@@ -46,6 +52,7 @@ document.querySelectorAll(".char").forEach((i) => {
 
 document.querySelector("#btn-delete").addEventListener("click", () => {
     document.querySelector("#display").innerHTML = "0";
+    isAns = 0;
 })
 
 document.querySelector("#equals").addEventListener("click", () => {
@@ -61,8 +68,12 @@ document.querySelector("#equals").addEventListener("click", () => {
     let history = evaluate(str);
     let ans = history[history.length - 1][2][0];
     if (ans != null && history[history.length - 1][2].length == 1) {
+        if (ans - parseInt(ans) != 0) {
+            ans = ans.toFixed(3);
+        }
         display.innerHTML = ans;
     }
+    isAns = 1;
     updateHistory(history)
 
 })
