@@ -1,6 +1,9 @@
 import {
     evaluate
 } from "./modules/evaluate.js";
+import {
+    drawCanvas
+} from "./modules/canvas.js";
 
 var isAns = 0;
 
@@ -32,7 +35,6 @@ const updateHistory = (history) => {
     })
 }
 document.querySelectorAll(".char").forEach((i) => {
-    console.log(i);
     i.addEventListener("click", () => {
         let char = i.innerHTML;
         let display = document.querySelector("#display");
@@ -74,6 +76,6 @@ document.querySelector("#equals").addEventListener("click", () => {
         display.value = ans;
     }
     isAns = 1;
-    updateHistory(history)
-
+    updateHistory(history);
+    drawCanvas(history);
 })

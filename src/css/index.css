@@ -281,3 +281,13 @@ a {
 .layui-container {
     padding-top: 60px;
 }
+
+#canvas-panel {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+}

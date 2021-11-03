@@ -35,17 +35,18 @@ export const evaluate = (str) => {
     }
     let opStack = new Stack();
     let numStack = new Stack();
-    history.log(str, opStack, numStack, "Origin");
+    history.log(str, opStack, numStack, "Origin", []);
     let char = str.charAt(0);
     str = str.slice(1);
     console.log("str.slice(): " + str);
     opStack.push(char);
-    history.log(str, opStack, numStack, "Init");
+    history.log(str, opStack, numStack, "Init", []);
     char = str.charAt(0);
     str = str.slice(1);
     console.log("str.slice(): " + str);
     while (char != '#' || opStack.top() != '#') {
         let logType = "placeHolder";
+        let logList = [];
         console.log("str: " + str);
         console.log("evaluating: " + char);
         if (!isLegalChar(char)) {
@@ -119,6 +120,7 @@ export const evaluate = (str) => {
                             return;
                         }
                         numStack.push(calculate(fst, op, scd));
+                        logList = [fst, op, scd];
                         logType = "Binocular";
                     } else {
                         if (numStack.size() < 1) {
@@ -127,17 +129,18 @@ export const evaluate = (str) => {
                         }
                         let num = numStack.pop();
                         numStack.push(calculateUnary(op, num));
+                        logList = [op, num];
                         logType = "Unary";
                     }
-                    history.log(str, opStack, numStack, logType);
+                    history.log(str, opStack, numStack, logType, logList);
                     continue;
                 case Result.CLOSE_BRACKET:
-                    opStack.pop();
+                    logList = [opStack.pop(), char];
                     logType = "Bracket";
             }
         }
 
-        history.log(str, opStack, numStack, logType);
+        history.log(str, opStack, numStack, logType, logList);
         char = str.charAt(0);
         str = str.slice(1);
 

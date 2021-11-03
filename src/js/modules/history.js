@@ -1,8 +1,8 @@
 export function History() {
     var items = [];
 
-    this.log = (str, opStack, numStack, type) => {
-        items.push([str, opStack.snapshot(), numStack.snapshot(), type]);
+    this.log = (str, opStack, numStack, type, logList) => {
+        items.push([str, opStack.snapshot(), numStack.snapshot(), type, logList]);
     }
 
     this.print = () => {
