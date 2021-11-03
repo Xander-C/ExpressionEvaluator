@@ -5,50 +5,101 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculate</title>
-    <link rel="stylesheet" href="//unpkg.com/layui@2.6.8/dist/css/layui.css">
+    <link rel="stylesheet" href="./src/css/layui.css">
+    <link rel="stylesheet" href="./src/css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="./src/css/fontawesome-all.css">
     <link rel="stylesheet" href="./src/css/index.css">
 </head>
 
 <body>
     <div class="layui-container">
         <div class="layui-row layui-col-space8">
-            <div class="layui-col-lg5 layui-col-lg-offset1 layui-col-md6">
-                <div class="layui-card">
-                    <div class="layui-card-header">操作</div>
-                    <div class="layui-card-body">
-                        <form class="layui-form" action="#">
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">表达式</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="title" required placeholder="请输入表达式" autocomplete="off"
-                                        class="layui-input" id="eval-input">
-                                </div>
-                                <!-- <div class="layui-form-mid layui-word-aux">提示信息</div> -->
+            <div
+                class="layui-col-xs12 layui-col-sm12 layui-col-md5 layui-col-md-offset1 layui-col-lg4 layui-col-lg-offset1">
+
+                <div class="calculator">
+                    <div class="row displayBox">
+                        <p class="displayText" id="display">0</p>
+                    </div>
+                    <div class="row numberPad">
+                        <div class="left-count">
+                            <div class="row">
+                                <button class="btn btn-delete hvr-back-pulse" id="btn-delete">C</button>
+                                <button class="btn btn-calc hvr-radial-out char" id="power">^</button>
+                                <button class="btn btn-calc hvr-radial-out char" id="decimal">abs</button>
                             </div>
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <button class="layui-btn" id="eval-btn" type="button">计算</button>
-                                    <!-- <button type="reset" class="layui-btn layui-btn-primary">重置</button> -->
-                                </div>
+                            <div class="row">
+                                <button class="btn btn-calc hvr-radial-out char" id="seven">7</button>
+                                <button class="btn btn-calc hvr-radial-out char" id="eight">8</button>
+                                <button class="btn btn-calc hvr-radial-out char" id="nine">9</button>
                             </div>
-                        </form>
+                            <div class="row">
+                                <button class="btn btn-calc hvr-radial-out char" id="four">4</button>
+                                <button class="btn btn-calc hvr-radial-out char" id="five">5</button>
+                                <button class="btn btn-calc hvr-radial-out char" id="six">6</button>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-calc hvr-radial-out char" id="one">1</button>
+                                <button class="btn btn-calc hvr-radial-out char" id="two">2</button>
+                                <button class="btn btn-calc hvr-radial-out char" id="three">3</button>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-calc hvr-radial-out char" id="left">(</button>
+                                <button class="btn btn-calc hvr-radial-out char" id="right">)</button>
+                                <button class="btn btn-calc hvr-radial-out char" id="zero">0</button>
+                            </div>
+                        </div>
+                        <div class="operationSide right-count">
+                            <button id="sqrt" class="btn btn-operation hvr-fade char">sqrt</button>
+                            <button id="log" class="btn btn-operation hvr-fade char">log</button>
+                            <button id="divide" class="btn btn-operation hvr-fade char">/</button>
+                            <button id="multiply" class="btn btn-operation hvr-fade char">*</button>
+                            <button id="subtract" class="btn btn-operation hvr-fade char">-</button>
+                            <button id="add" class="btn btn-operation hvr-fade char">+</button>
+                            <button id="equals" class="btn btn-operation equals hvr-back-pulse">=</button>
+                        </div>
+                        <div class="clear"></div>
                     </div>
                 </div>
             </div>
-            <div class="layui-col-lg5 layui-col-md6">
-                <div class="layui-card">
-                    <div class="layui-card-header">动画</div>
-                    <div class="layui-card-body">
-                        ??
+            <div class="layui-col-xs12 layui-col-sm12 layui-col-md5 layui-col-lg6">
+                <div class="layui-panel">
+                    <div class="layui-card-header">计算过程</div>
+                    <div class="layui-card-body" id="table-container">
+                        <table class="layui-table">
+                            <colgroup>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>未处理序列</th>
+                                    <th>运算符栈</th>
+                                    <th>数字栈</th>
+                                    <th>操作类型</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+                                <tr>
+                                    <td>0</td>
+                                    <td>请先输入表达式</td>
+                                    <td>请先输入表达式</td>
+                                    <td>请先输入表达式</td>
+                                    <td>请先输入表达式</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
-<script>
-</script>
-<script src="//unpkg.com/layui@2.6.8/dist/layui.js"></script>
+<script src="./src/js/layui.js"></script>
 <script src="./src/layer/layer.js"></script>
 <script type="module" src="./src/js/index.js"></script>
 
