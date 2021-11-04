@@ -6,6 +6,7 @@ import {
 } from "./modules/canvas.js";
 
 var isAns = 0;
+var historyCache;
 
 const updateHistory = (history) => {
     let tableBody = document.querySelector("#table-body");
@@ -34,6 +35,10 @@ const updateHistory = (history) => {
         tableBody.appendChild(row);
     })
 }
+
+document.querySelector("#btn-reset").addEventListener("click", () => {
+    drawCanvas(historyCache);
+})
 document.querySelectorAll(".char").forEach((i) => {
     i.addEventListener("click", () => {
         let char = i.innerHTML;
@@ -76,6 +81,7 @@ document.querySelector("#equals").addEventListener("click", () => {
         display.value = ans;
     }
     isAns = 1;
+    historyCache = history;
     updateHistory(history);
     drawCanvas(history);
 })

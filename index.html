@@ -7,6 +7,7 @@
     <title>Calculate</title>
     <link rel="stylesheet" href="./src/css/layui.css">
     <link rel="stylesheet" href="./src/css/style.css" type="text/css" media="all" />
+    <link href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="./src/css/index.css">
 </head>
 
@@ -100,10 +101,13 @@
         <div class="layui-row layui-col-space8">
             <div class="layui-panel layui-col-xs12 layui-col-sm12 layui-col-md10 layui-col-md-offset1 layui-col-lg10 layui-col-lg-offset1"
                 id="canvas-panel">
-                <canvas height="400px" width="700px"></canvas>
+                <div class="layui-card-header">动画<a id="btn-reset" src="#"><i class="fa fa-redo"></i></as>
+                </div>
+                <div class="layui-card-body">
+                    <canvas height="400px" width="700px"></canvas>
+                </div>
             </div>
         </div>
-    </div>
 </body>
 <script src="./src/js/jquery-3.6.0.min.js"></script>
 <script src="./src/layer/layer.js"></script>

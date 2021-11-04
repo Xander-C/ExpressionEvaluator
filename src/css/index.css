@@ -291,3 +291,9 @@ canvas {
     display: block;
     margin: 0 auto;
 }
+
+#btn-reset {
+    float: right;
+    margin-top: 10px;
+    cursor: pointer;
+}
