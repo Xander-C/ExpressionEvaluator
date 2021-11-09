@@ -125,15 +125,15 @@ const drawBinocular = async (i, originLength) => { //Todo: 添加字符个数偏
             ctx.fillText(outNumber + "", 450, 340 - 30 * j);
         }
         if (elapsed < 900) {
-            ctx.fillText(fst, (fstEndX - fstBeginX) / 900 * elapsed + fstBeginX, (fstEndY - fstBeginY) / 900 * elapsed + fstBeginY);
-            ctx.fillText(scd, (scdEndX - scdBeginX) / 900 * elapsed + scdBeginX, (scdEndY - scdBeginY) / 900 * elapsed + scdBeginY);
-            ctx.fillText(operator, (operatorEndX - operatorBeginX) / 900 * elapsed + operatorBeginX, (operatorEndY - operatorBeginY) / 900 * elapsed + operatorBeginY);
+            ctx.fillText(fst, (fstEndX - fstBeginX) / 900 * Math.min(elapsed, 900) + fstBeginX, (fstEndY - fstBeginY) / 900 * Math.min(elapsed, 900) + fstBeginY);
+            ctx.fillText(scd, (scdEndX - scdBeginX) / 900 * Math.min(elapsed, 900) + scdBeginX, (scdEndY - scdBeginY) / 900 * Math.min(elapsed, 900) + scdBeginY);
+            ctx.fillText(operator, (operatorEndX - operatorBeginX) / 900 * Math.min(elapsed, 900) + operatorBeginX, (operatorEndY - operatorBeginY) / 900 * Math.min(elapsed, 900) + operatorBeginY);
         } else if (elapsed < 1200) {
             ctx.fillText(fst, fstEndX, fstEndY);
             ctx.fillText(scd, scdEndX, scdEndY);
             ctx.fillText(operator, operatorEndX, operatorEndY);
         } else {
-            ctx.fillText(ans, (ansEndX - ansBeginX) / 800 * (elapsed - 1200) + ansBeginX, (ansEndY - ansBeginY) / 800 * (elapsed - 1200) + ansBeginY);
+            ctx.fillText(ans, (ansEndX - ansBeginX) / 800 * (Math.min(elapsed, 2000) - 1200) + ansBeginX, (ansEndY - ansBeginY) / 800 * (Math.min(elapsed, 2000) - 1200) + ansBeginY);
         }
         if (elapsed < 2000) {
             window.requestAnimationFrame(innerDraw);
@@ -195,13 +195,13 @@ const drawUnary = async (i, originLength) => {
             ctx.fillText(outNumber + "", 450, 340 - 30 * j);
         }
         if (elapsed < 900) {
-            ctx.fillText(number, (numberEndX - numberBeginX) / 900 * elapsed + numberBeginX, (numberEndY - numberBeginY) / 900 * elapsed + numberBeginY);
-            ctx.fillText(operator, (operatorEndX - operatorBeginX) / 900 * elapsed + operatorBeginX, (operatorEndY - operatorBeginY) / 900 * elapsed + operatorBeginY);
+            ctx.fillText(number, (numberEndX - numberBeginX) / 900 * Math.min(elapsed, 900) + numberBeginX, (numberEndY - numberBeginY) / 900 * Math.min(elapsed, 900) + numberBeginY);
+            ctx.fillText(operator, (operatorEndX - operatorBeginX) / 900 * Math.min(elapsed, 900) + operatorBeginX, (operatorEndY - operatorBeginY) / 900 * Math.min(elapsed, 900) + operatorBeginY);
         } else if (elapsed < 1200) {
             ctx.fillText(number, numberEndX, numberEndY);
             ctx.fillText(operator, operatorEndX, operatorEndY);
         } else {
-            ctx.fillText(ans, (ansEndX - ansBeginX) / 800 * (elapsed - 1200) + ansBeginX, (ansEndY - ansBeginY) / 800 * (elapsed - 1200) + ansBeginY);
+            ctx.fillText(ans, (ansEndX - ansBeginX) / 800 * (Math.min(elapsed, 2000) - 1200) + ansBeginX, (ansEndY - ansBeginY) / 800 * (Math.min(elapsed, 2000) - 1200) + ansBeginY);
         }
         if (elapsed < 2000) {
             window.requestAnimationFrame(innerDraw);
@@ -255,8 +255,8 @@ const drawBracket = async (i, originLength) => {
             ctx.fillText(outNumber + "", 450, 340 - 30 * j);
         }
 
-        ctx.fillText(rightBracket, (rightBracketEndX - rightBracketBeginX) / 1000 * elapsed + rightBracketBeginX, (rightBracketEndY - rightBracketBeginY) / 1000 * elapsed + rightBracketBeginY);
-        ctx.fillText(leftBracket, (leftBracketEndX - leftBracketBeginX) / 1000 * elapsed + leftBracketBeginX, (leftBracketEndY - leftBracketBeginY) / 1000 * elapsed + leftBracketBeginY);
+        ctx.fillText(rightBracket, (rightBracketEndX - rightBracketBeginX) / 1000 * Math.min(elapsed, 1000) + rightBracketBeginX, (rightBracketEndY - rightBracketBeginY) / 1000 * Math.min(elapsed, 1000) + rightBracketBeginY);
+        ctx.fillText(leftBracket, (leftBracketEndX - leftBracketBeginX) / 1000 * Math.min(elapsed, 1000) + leftBracketBeginX, (leftBracketEndY - leftBracketBeginY) / 1000 * Math.min(elapsed, 1000) + leftBracketBeginY);
 
         if (elapsed < 1000) {
             window.requestAnimationFrame(innerDraw);
@@ -303,7 +303,7 @@ const drawChar = async (i, originLength) => {
             }
             ctx.fillText(outNumber + "", 450, 340 - 30 * j);
         }
-        ctx.fillText(operator, (operatorEndX - operatorBeginX) / 1000 * elapsed + operatorBeginX, (operatorEndY - operatorBeginY) / 1000 * elapsed + operatorBeginY);
+        ctx.fillText(operator, (operatorEndX - operatorBeginX) / 1000 * Math.min(elapsed, 1000) + operatorBeginX, (operatorEndY - operatorBeginY) / 1000 * Math.min(elapsed, 1000) + operatorBeginY);
 
         if (elapsed < 1000) {
             window.requestAnimationFrame(innerDraw);
@@ -350,7 +350,7 @@ const drawNum = async (i, originLength) => {
         for (let j = 0; j < opStack.length; j++) {
             ctx.fillText(opStack[j], 255, 340 - 30 * j);
         }
-        ctx.fillText(number, (numberEndX - numberBeginX) / 1000 * elapsed + numberBeginX, (numberEndY - numberBeginY) / 1000 * elapsed + numberBeginY);
+        ctx.fillText(number, (numberEndX - numberBeginX) / 1000 * Math.min(elapsed, 1000) + numberBeginX, (numberEndY - numberBeginY) / 1000 * Math.min(elapsed, 1000) + numberBeginY);
 
         if (elapsed < 1000) {
             window.requestAnimationFrame(innerDraw);
