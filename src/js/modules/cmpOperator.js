@@ -14,21 +14,17 @@ const priorityMap = {
     "abs": 4,
 };
 
-const seq = "#{[(+-*/^)]}"
-
 export const cmpOperator = (inStack, char) => {
     console.log("comparing: " + inStack + " and " + char);
     switch (char) {
         case '(':
+        case '[':
+        case '{':
             return Result.CHAR;
         case ')':
             return inStack == '(' ? Result.CLOSE_BRACKET : Result.STACK;
-        case '[':
-            return Result.CHAR;
         case ']':
             return inStack == '[' ? Result.CLOSE_BRACKET : Result.STACK;
-        case '{':
-            return Result.CHAR;
         case '}':
             return inStack == '{' ? Result.CLOSE_BRACKET : Result.STACK;
         case '#':
